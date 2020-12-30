@@ -1,0 +1,1423 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pycarl core &#8212; pycarl 2.0.4 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Pycarl convert" href="convert.html" />
+    <link rel="prev" title="Getting Started" href="../getting_started.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="../_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          Pycarl</a>
+        <span class="navbar-text navbar-version pull-left"><b>2.0.4</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="http://smtrat.github.io/carl/">Carl</a></li>
+                <li><a href="https://github.com/moves-rwth/pycarl">Github</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Pycarl <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#installation-steps">Installation Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started.html#a-quick-tour-through-pycarl">A Quick Tour through pycarl</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Modules:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Pycarl core</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-pycarl">Number independent types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-pycarl.gmp">Number dependent types (gmp)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-pycarl.cln">Number dependent types (cln)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="convert.html">Pycarl convert</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="convert.html#module-pycarl.convert">Number conversion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="formula.html">Pycarl formula</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="formula.html#module-pycarl.formula">Number independent types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="formula.html#module-pycarl.gmp.formula">Number dependent types (gmp)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="formula.html#module-pycarl.cln.formula">Number dependent types (cln)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="parse.html">Pycarl parse</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="parse.html#module-pycarl.parse">Number independent types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parse.html#module-pycarl.gmp.parse">Number dependent types (gmp)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parse.html#module-pycarl.cln.parse">Number dependent types (cln)</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Pycarl core</a><ul>
+<li><a class="reference internal" href="#module-pycarl">Number independent types</a></li>
+<li><a class="reference internal" href="#module-pycarl.gmp">Number dependent types (gmp)</a></li>
+<li><a class="reference internal" href="#module-pycarl.cln">Number dependent types (cln)</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="../getting_started.html" title="Previous Chapter: Getting Started"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Getting Started</span>
+    </a>
+  </li>
+  <li>
+    <a href="convert.html" title="Next Chapter: Pycarl convert"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Pycarl convert &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <div class="section" id="pycarl-core">
+<h1>Pycarl core<a class="headerlink" href="#pycarl-core" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-pycarl">
+<span id="number-independent-types"></span><h2>Number independent types<a class="headerlink" href="#module-pycarl" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="pycarl.BoundType">
+<em class="property">class </em><code class="sig-prename descclassname">pycarl.</code><code class="sig-name descname">BoundType</code><a class="headerlink" href="#pycarl.BoundType" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py attribute">
+<dt id="pycarl.BoundType.INFTY">
+<code class="sig-name descname">INFTY</code><em class="property"> = BoundType.INFTY</em><a class="headerlink" href="#pycarl.BoundType.INFTY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="pycarl.BoundType.STRICT">
+<code class="sig-name descname">STRICT</code><em class="property"> = BoundType.STRICT</em><a class="headerlink" href="#pycarl.BoundType.STRICT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="pycarl.BoundType.WEAK">
+<code class="sig-name descname">WEAK</code><em class="property"> = BoundType.WEAK</em><a class="headerlink" href="#pycarl.BoundType.WEAK" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pycarl.Monomial">
+<em class="property">class </em><code class="sig-prename descclassname">pycarl.</code><code class="sig-name descname">Monomial</code><a class="headerlink" href="#pycarl.Monomial" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt id="pycarl.Monomial.exponents">
+<em class="property">property </em><code class="sig-name descname">exponents</code><a class="headerlink" href="#pycarl.Monomial.exponents" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.Monomial.tdeg">
+<em class="property">property </em><code class="sig-name descname">tdeg</code><a class="headerlink" href="#pycarl.Monomial.tdeg" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt id="pycarl.NoPicklingSupport">
+<em class="property">exception </em><code class="sig-prename descclassname">pycarl.</code><code class="sig-name descname">NoPicklingSupport</code><a class="headerlink" href="#pycarl.NoPicklingSupport" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt id="pycarl.Variable">
+<em class="property">class </em><code class="sig-prename descclassname">pycarl.</code><code class="sig-name descname">Variable</code><a class="headerlink" href="#pycarl.Variable" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt id="pycarl.Variable.id">
+<em class="property">property </em><code class="sig-name descname">id</code><a class="headerlink" href="#pycarl.Variable.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.Variable.is_no_variable">
+<em class="property">property </em><code class="sig-name descname">is_no_variable</code><a class="headerlink" href="#pycarl.Variable.is_no_variable" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.Variable.name">
+<em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#pycarl.Variable.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.Variable.rank">
+<em class="property">property </em><code class="sig-name descname">rank</code><a class="headerlink" href="#pycarl.Variable.rank" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.Variable.type">
+<em class="property">property </em><code class="sig-name descname">type</code><a class="headerlink" href="#pycarl.Variable.type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pycarl.VariableType">
+<em class="property">class </em><code class="sig-prename descclassname">pycarl.</code><code class="sig-name descname">VariableType</code><a class="headerlink" href="#pycarl.VariableType" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py attribute">
+<dt id="pycarl.VariableType.BOOL">
+<code class="sig-name descname">BOOL</code><em class="property"> = VariableType.BOOL</em><a class="headerlink" href="#pycarl.VariableType.BOOL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="pycarl.VariableType.INT">
+<code class="sig-name descname">INT</code><em class="property"> = VariableType.INT</em><a class="headerlink" href="#pycarl.VariableType.INT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="pycarl.VariableType.REAL">
+<code class="sig-name descname">REAL</code><em class="property"> = VariableType.REAL</em><a class="headerlink" href="#pycarl.VariableType.REAL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="pycarl.carl_version">
+<code class="sig-prename descclassname">pycarl.</code><code class="sig-name descname">carl_version</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycarl.carl_version" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get Carl version.
+:return: Version of Carl.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pycarl.clear_monomial_pool">
+<code class="sig-prename descclassname">pycarl.</code><code class="sig-name descname">clear_monomial_pool</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#pycarl.clear_monomial_pool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear monomial pool and remove all monomials</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pycarl.clear_pools">
+<code class="sig-prename descclassname">pycarl.</code><code class="sig-name descname">clear_pools</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycarl.clear_pools" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear all pools.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pycarl.clear_variable_pool">
+<code class="sig-prename descclassname">pycarl.</code><code class="sig-name descname">clear_variable_pool</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#pycarl.clear_variable_pool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear variable pool and remove all variables</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pycarl.create_monomial">
+<code class="sig-prename descclassname">pycarl.</code><code class="sig-name descname">create_monomial</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">variable</span><span class="p">:</span> <span class="n">pycarl.core.Variable</span></em>, <em class="sig-param"><span class="n">exponent</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; pycarl.core.Monomial<a class="headerlink" href="#pycarl.create_monomial" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create monomial</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pycarl.has_cln">
+<code class="sig-prename descclassname">pycarl.</code><code class="sig-name descname">has_cln</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycarl.has_cln" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if pycarl has support for CLN.
+:return: True iff CLN is supported.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pycarl.has_parser">
+<code class="sig-prename descclassname">pycarl.</code><code class="sig-name descname">has_parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycarl.has_parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if pycarl has parsing support.
+:return: True iff parsing is supported.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pycarl.print_info">
+<code class="sig-prename descclassname">pycarl.</code><code class="sig-name descname">print_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycarl.print_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print information about pycarl.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pycarl.variable_with_name">
+<code class="sig-prename descclassname">pycarl.</code><code class="sig-name descname">variable_with_name</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; pycarl.core.Variable<a class="headerlink" href="#pycarl.variable_with_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a variable from the pool with the given name.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pycarl.gmp">
+<span id="number-dependent-types-gmp"></span><h2>Number dependent types (gmp)<a class="headerlink" href="#module-pycarl.gmp" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="pycarl.gmp.Factorization">
+<em class="property">class </em><code class="sig-prename descclassname">pycarl.gmp.</code><code class="sig-name descname">Factorization</code><a class="headerlink" href="#pycarl.gmp.Factorization" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt id="pycarl.gmp.FactorizedPolynomial">
+<em class="property">class </em><code class="sig-prename descclassname">pycarl.gmp.</code><code class="sig-name descname">FactorizedPolynomial</code><a class="headerlink" href="#pycarl.gmp.FactorizedPolynomial" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represent a polynomial with its factorization</p>
+<dl class="py method">
+<dt id="pycarl.gmp.FactorizedPolynomial.cache">
+<code class="sig-name descname">cache</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.FactorizedPolynomial</span></em><span class="sig-paren">)</span> &#x2192; pycarl.gmp.gmp._FactorizationCache<a class="headerlink" href="#pycarl.gmp.FactorizedPolynomial.cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.FactorizedPolynomial.coefficient">
+<em class="property">property </em><code class="sig-name descname">coefficient</code><a class="headerlink" href="#pycarl.gmp.FactorizedPolynomial.coefficient" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.FactorizedPolynomial.constant_part">
+<code class="sig-name descname">constant_part</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.FactorizedPolynomial</span></em><span class="sig-paren">)</span> &#x2192; pycarl.gmp.gmp.Rational<a class="headerlink" href="#pycarl.gmp.FactorizedPolynomial.constant_part" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.FactorizedPolynomial.derive">
+<code class="sig-name descname">derive</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.FactorizedPolynomial</span></em>, <em class="sig-param"><span class="n">variable</span><span class="p">:</span> <span class="n">pycarl.core.Variable</span></em><span class="sig-paren">)</span> &#x2192; pycarl.gmp.gmp.FactorizedPolynomial<a class="headerlink" href="#pycarl.gmp.FactorizedPolynomial.derive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the derivative</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.FactorizedPolynomial.evaluate">
+<code class="sig-name descname">evaluate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.FactorizedPolynomial</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">Dict<span class="p">[</span>pycarl.core.Variable<span class="p">, </span>pycarl.gmp.gmp.Rational<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; pycarl.gmp.gmp.Rational<a class="headerlink" href="#pycarl.gmp.FactorizedPolynomial.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.FactorizedPolynomial.factorization">
+<code class="sig-name descname">factorization</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.FactorizedPolynomial</span></em><span class="sig-paren">)</span> &#x2192; pycarl.gmp.gmp.Factorization<a class="headerlink" href="#pycarl.gmp.FactorizedPolynomial.factorization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get factorization</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.FactorizedPolynomial.gather_variables">
+<code class="sig-name descname">gather_variables</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.FactorizedPolynomial</span></em><span class="sig-paren">)</span> &#x2192; Set<span class="p">[</span>pycarl.core.Variable<span class="p">]</span><a class="headerlink" href="#pycarl.gmp.FactorizedPolynomial.gather_variables" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.FactorizedPolynomial.is_constant">
+<code class="sig-name descname">is_constant</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.FactorizedPolynomial</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.gmp.FactorizedPolynomial.is_constant" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.FactorizedPolynomial.is_one">
+<code class="sig-name descname">is_one</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.FactorizedPolynomial</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.gmp.FactorizedPolynomial.is_one" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.FactorizedPolynomial.polynomial">
+<code class="sig-name descname">polynomial</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.FactorizedPolynomial</span></em><span class="sig-paren">)</span> &#x2192; pycarl.gmp.gmp.Polynomial<a class="headerlink" href="#pycarl.gmp.FactorizedPolynomial.polynomial" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get underlying polynomial</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.FactorizedPolynomial.to_smt2">
+<code class="sig-name descname">to_smt2</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.FactorizedPolynomial</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#pycarl.gmp.FactorizedPolynomial.to_smt2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pycarl.gmp.FactorizedRationalFunction">
+<em class="property">class </em><code class="sig-prename descclassname">pycarl.gmp.</code><code class="sig-name descname">FactorizedRationalFunction</code><a class="headerlink" href="#pycarl.gmp.FactorizedRationalFunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represent a rational function, that is the fraction of two factorized polynomials</p>
+<dl class="py method">
+<dt id="pycarl.gmp.FactorizedRationalFunction.constant_part">
+<code class="sig-name descname">constant_part</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.FactorizedRationalFunction</span></em><span class="sig-paren">)</span> &#x2192; pycarl.gmp.gmp.Rational<a class="headerlink" href="#pycarl.gmp.FactorizedRationalFunction.constant_part" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.FactorizedRationalFunction.denominator">
+<em class="property">property </em><code class="sig-name descname">denominator</code><a class="headerlink" href="#pycarl.gmp.FactorizedRationalFunction.denominator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.FactorizedRationalFunction.derive">
+<code class="sig-name descname">derive</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.FactorizedRationalFunction</span></em>, <em class="sig-param"><span class="n">variable</span><span class="p">:</span> <span class="n">pycarl.core.Variable</span></em><span class="sig-paren">)</span> &#x2192; pycarl.gmp.gmp.FactorizedRationalFunction<a class="headerlink" href="#pycarl.gmp.FactorizedRationalFunction.derive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the derivative</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.FactorizedRationalFunction.evaluate">
+<code class="sig-name descname">evaluate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.FactorizedRationalFunction</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">Dict<span class="p">[</span>pycarl.core.Variable<span class="p">, </span>pycarl.gmp.gmp.Rational<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; pycarl.gmp.gmp.Rational<a class="headerlink" href="#pycarl.gmp.FactorizedRationalFunction.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.FactorizedRationalFunction.gather_variables">
+<code class="sig-name descname">gather_variables</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.FactorizedRationalFunction</span></em><span class="sig-paren">)</span> &#x2192; Set<span class="p">[</span>pycarl.core.Variable<span class="p">]</span><a class="headerlink" href="#pycarl.gmp.FactorizedRationalFunction.gather_variables" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.FactorizedRationalFunction.is_constant">
+<code class="sig-name descname">is_constant</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.FactorizedRationalFunction</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.gmp.FactorizedRationalFunction.is_constant" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.FactorizedRationalFunction.numerator">
+<em class="property">property </em><code class="sig-name descname">numerator</code><a class="headerlink" href="#pycarl.gmp.FactorizedRationalFunction.numerator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.FactorizedRationalFunction.rational_function">
+<code class="sig-name descname">rational_function</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.FactorizedRationalFunction</span></em><span class="sig-paren">)</span> &#x2192; pycarl.gmp.gmp.RationalFunction<a class="headerlink" href="#pycarl.gmp.FactorizedRationalFunction.rational_function" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.FactorizedRationalFunction.to_smt2">
+<code class="sig-name descname">to_smt2</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.FactorizedRationalFunction</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#pycarl.gmp.FactorizedRationalFunction.to_smt2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pycarl.gmp.Integer">
+<em class="property">class </em><code class="sig-prename descclassname">pycarl.gmp.</code><code class="sig-name descname">Integer</code><a class="headerlink" href="#pycarl.gmp.Integer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class wrapping gmp-integers</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="pycarl.gmp.Interval">
+<em class="property">class </em><code class="sig-prename descclassname">pycarl.gmp.</code><code class="sig-name descname">Interval</code><a class="headerlink" href="#pycarl.gmp.Interval" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt id="pycarl.gmp.Interval.abs">
+<code class="sig-name descname">abs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em><span class="sig-paren">)</span> &#x2192; pycarl.gmp.gmp.Interval<a class="headerlink" href="#pycarl.gmp.Interval.abs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Interval.center">
+<code class="sig-name descname">center</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em><span class="sig-paren">)</span> &#x2192; pycarl.gmp.gmp.Rational<a class="headerlink" href="#pycarl.gmp.Interval.center" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Interval.complement">
+<code class="sig-name descname">complement</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em>, <em class="sig-param"><span class="n">arg1</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.gmp.Interval.complement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Interval.contains">
+<code class="sig-name descname">contains</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycarl.gmp.Interval.contains" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>contains(self: pycarl.gmp.gmp.Interval, arg0: pycarl.gmp.gmp.Rational) -&gt; bool</p></li>
+<li><p>contains(self: pycarl.gmp.gmp.Interval, arg0: pycarl.gmp.gmp.Interval) -&gt; bool</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Interval.diameter">
+<code class="sig-name descname">diameter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em><span class="sig-paren">)</span> &#x2192; pycarl.gmp.gmp.Rational<a class="headerlink" href="#pycarl.gmp.Interval.diameter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Interval.difference">
+<code class="sig-name descname">difference</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em>, <em class="sig-param"><span class="n">arg1</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em>, <em class="sig-param"><span class="n">arg2</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.gmp.Interval.difference" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Interval.div">
+<code class="sig-name descname">div</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em><span class="sig-paren">)</span> &#x2192; pycarl.gmp.gmp.Interval<a class="headerlink" href="#pycarl.gmp.Interval.div" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Interval.emptyInterval">
+<code class="sig-name descname">emptyInterval</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; pycarl.gmp.gmp.Interval<a class="headerlink" href="#pycarl.gmp.Interval.emptyInterval" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Interval.integralPart">
+<code class="sig-name descname">integralPart</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em><span class="sig-paren">)</span> &#x2192; pycarl.gmp.gmp.Interval<a class="headerlink" href="#pycarl.gmp.Interval.integralPart" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Interval.intersect">
+<code class="sig-name descname">intersect</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em><span class="sig-paren">)</span> &#x2192; pycarl.gmp.gmp.Interval<a class="headerlink" href="#pycarl.gmp.Interval.intersect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Interval.intersectsWith">
+<code class="sig-name descname">intersectsWith</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.gmp.Interval.intersectsWith" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Interval.inverse">
+<code class="sig-name descname">inverse</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em><span class="sig-paren">)</span> &#x2192; pycarl.gmp.gmp.Interval<a class="headerlink" href="#pycarl.gmp.Interval.inverse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Interval.isClosedInterval">
+<code class="sig-name descname">isClosedInterval</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.gmp.Interval.isClosedInterval" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Interval.isEmpty">
+<code class="sig-name descname">isEmpty</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.gmp.Interval.isEmpty" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Interval.isHalfBounded">
+<code class="sig-name descname">isHalfBounded</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.gmp.Interval.isHalfBounded" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Interval.isInfinite">
+<code class="sig-name descname">isInfinite</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.gmp.Interval.isInfinite" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Interval.isNegative">
+<code class="sig-name descname">isNegative</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.gmp.Interval.isNegative" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Interval.isOne">
+<code class="sig-name descname">isOne</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.gmp.Interval.isOne" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Interval.isOpenInterval">
+<code class="sig-name descname">isOpenInterval</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.gmp.Interval.isOpenInterval" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Interval.isPointInterval">
+<code class="sig-name descname">isPointInterval</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.gmp.Interval.isPointInterval" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Interval.isPositive">
+<code class="sig-name descname">isPositive</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.gmp.Interval.isPositive" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Interval.isProperSubset">
+<code class="sig-name descname">isProperSubset</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.gmp.Interval.isProperSubset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Interval.isSemiNegative">
+<code class="sig-name descname">isSemiNegative</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.gmp.Interval.isSemiNegative" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Interval.isSemiPositive">
+<code class="sig-name descname">isSemiPositive</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.gmp.Interval.isSemiPositive" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Interval.isSubset">
+<code class="sig-name descname">isSubset</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.gmp.Interval.isSubset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Interval.isUnbounded">
+<code class="sig-name descname">isUnbounded</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.gmp.Interval.isUnbounded" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Interval.isZero">
+<code class="sig-name descname">isZero</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.gmp.Interval.isZero" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Interval.lower">
+<code class="sig-name descname">lower</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em><span class="sig-paren">)</span> &#x2192; pycarl.gmp.gmp.Rational<a class="headerlink" href="#pycarl.gmp.Interval.lower" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Interval.meets">
+<code class="sig-name descname">meets</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Rational</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.gmp.Interval.meets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Interval.sample">
+<code class="sig-name descname">sample</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">bool</span></em><span class="sig-paren">)</span> &#x2192; pycarl.gmp.gmp.Rational<a class="headerlink" href="#pycarl.gmp.Interval.sample" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Interval.setLower">
+<code class="sig-name descname">setLower</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Rational</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#pycarl.gmp.Interval.setLower" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Interval.setUpper">
+<code class="sig-name descname">setUpper</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Rational</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#pycarl.gmp.Interval.setUpper" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Interval.symmetricDifference">
+<code class="sig-name descname">symmetricDifference</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em>, <em class="sig-param"><span class="n">arg1</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em>, <em class="sig-param"><span class="n">arg2</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.gmp.Interval.symmetricDifference" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Interval.unboundedInterval">
+<code class="sig-name descname">unboundedInterval</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; pycarl.gmp.gmp.Interval<a class="headerlink" href="#pycarl.gmp.Interval.unboundedInterval" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Interval.unite">
+<code class="sig-name descname">unite</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em>, <em class="sig-param"><span class="n">arg1</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em>, <em class="sig-param"><span class="n">arg2</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.gmp.Interval.unite" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Interval.upper">
+<code class="sig-name descname">upper</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em><span class="sig-paren">)</span> &#x2192; pycarl.gmp.gmp.Rational<a class="headerlink" href="#pycarl.gmp.Interval.upper" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Interval.zeroInterval">
+<code class="sig-name descname">zeroInterval</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; pycarl.gmp.gmp.Interval<a class="headerlink" href="#pycarl.gmp.Interval.zeroInterval" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pycarl.gmp.Polynomial">
+<em class="property">class </em><code class="sig-prename descclassname">pycarl.gmp.</code><code class="sig-name descname">Polynomial</code><a class="headerlink" href="#pycarl.gmp.Polynomial" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represent a multivariate polynomial</p>
+<dl class="py method">
+<dt id="pycarl.gmp.Polynomial.constant_part">
+<code class="sig-name descname">constant_part</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Polynomial</span></em><span class="sig-paren">)</span> &#x2192; pycarl.gmp.gmp.Rational<a class="headerlink" href="#pycarl.gmp.Polynomial.constant_part" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Polynomial.degree">
+<code class="sig-name descname">degree</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Polynomial</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">pycarl.core.Variable</span></em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#pycarl.gmp.Polynomial.degree" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Polynomial.derive">
+<code class="sig-name descname">derive</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Polynomial</span></em>, <em class="sig-param"><span class="n">variable</span><span class="p">:</span> <span class="n">pycarl.core.Variable</span></em><span class="sig-paren">)</span> &#x2192; pycarl.gmp.gmp.Polynomial<a class="headerlink" href="#pycarl.gmp.Polynomial.derive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the derivative</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Polynomial.evaluate">
+<code class="sig-name descname">evaluate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Polynomial</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">Dict<span class="p">[</span>pycarl.core.Variable<span class="p">, </span>pycarl.gmp.gmp.Rational<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; pycarl.gmp.gmp.Rational<a class="headerlink" href="#pycarl.gmp.Polynomial.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Polynomial.gather_variables">
+<code class="sig-name descname">gather_variables</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Polynomial</span></em><span class="sig-paren">)</span> &#x2192; Set<span class="p">[</span>pycarl.core.Variable<span class="p">]</span><a class="headerlink" href="#pycarl.gmp.Polynomial.gather_variables" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Polynomial.is_constant">
+<code class="sig-name descname">is_constant</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Polynomial</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.gmp.Polynomial.is_constant" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Polynomial.nr_terms">
+<em class="property">property </em><code class="sig-name descname">nr_terms</code><a class="headerlink" href="#pycarl.gmp.Polynomial.nr_terms" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Polynomial.substitute">
+<code class="sig-name descname">substitute</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Polynomial</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">Dict<span class="p">[</span>pycarl.core.Variable<span class="p">, </span>pycarl.gmp.gmp.Polynomial<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; pycarl.gmp.gmp.Polynomial<a class="headerlink" href="#pycarl.gmp.Polynomial.substitute" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Polynomial.to_smt2">
+<code class="sig-name descname">to_smt2</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Polynomial</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#pycarl.gmp.Polynomial.to_smt2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Polynomial.total_degree">
+<em class="property">property </em><code class="sig-name descname">total_degree</code><a class="headerlink" href="#pycarl.gmp.Polynomial.total_degree" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pycarl.gmp.Rational">
+<em class="property">class </em><code class="sig-prename descclassname">pycarl.gmp.</code><code class="sig-name descname">Rational</code><a class="headerlink" href="#pycarl.gmp.Rational" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class wrapping gmp-rational numbers</p>
+<dl class="py method">
+<dt id="pycarl.gmp.Rational.denominator">
+<em class="property">property </em><code class="sig-name descname">denominator</code><a class="headerlink" href="#pycarl.gmp.Rational.denominator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Rational.nominator">
+<em class="property">property </em><code class="sig-name descname">nominator</code><a class="headerlink" href="#pycarl.gmp.Rational.nominator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Rational.numerator">
+<em class="property">property </em><code class="sig-name descname">numerator</code><a class="headerlink" href="#pycarl.gmp.Rational.numerator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pycarl.gmp.RationalFunction">
+<em class="property">class </em><code class="sig-prename descclassname">pycarl.gmp.</code><code class="sig-name descname">RationalFunction</code><a class="headerlink" href="#pycarl.gmp.RationalFunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represent a rational function, that is the fraction of two multivariate polynomials</p>
+<dl class="py method">
+<dt id="pycarl.gmp.RationalFunction.constant_part">
+<code class="sig-name descname">constant_part</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.RationalFunction</span></em><span class="sig-paren">)</span> &#x2192; pycarl.gmp.gmp.Rational<a class="headerlink" href="#pycarl.gmp.RationalFunction.constant_part" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.RationalFunction.denominator">
+<em class="property">property </em><code class="sig-name descname">denominator</code><a class="headerlink" href="#pycarl.gmp.RationalFunction.denominator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.RationalFunction.derive">
+<code class="sig-name descname">derive</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.RationalFunction</span></em>, <em class="sig-param"><span class="n">variable</span><span class="p">:</span> <span class="n">pycarl.core.Variable</span></em><span class="sig-paren">)</span> &#x2192; pycarl.gmp.gmp.RationalFunction<a class="headerlink" href="#pycarl.gmp.RationalFunction.derive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the derivative</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.RationalFunction.evaluate">
+<code class="sig-name descname">evaluate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.RationalFunction</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">Dict<span class="p">[</span>pycarl.core.Variable<span class="p">, </span>pycarl.gmp.gmp.Rational<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; pycarl.gmp.gmp.Rational<a class="headerlink" href="#pycarl.gmp.RationalFunction.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.RationalFunction.gather_variables">
+<code class="sig-name descname">gather_variables</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.RationalFunction</span></em><span class="sig-paren">)</span> &#x2192; Set<span class="p">[</span>pycarl.core.Variable<span class="p">]</span><a class="headerlink" href="#pycarl.gmp.RationalFunction.gather_variables" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.RationalFunction.is_constant">
+<code class="sig-name descname">is_constant</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.RationalFunction</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.gmp.RationalFunction.is_constant" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.RationalFunction.nominator">
+<em class="property">property </em><code class="sig-name descname">nominator</code><a class="headerlink" href="#pycarl.gmp.RationalFunction.nominator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.RationalFunction.numerator">
+<em class="property">property </em><code class="sig-name descname">numerator</code><a class="headerlink" href="#pycarl.gmp.RationalFunction.numerator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.RationalFunction.to_smt2">
+<code class="sig-name descname">to_smt2</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.RationalFunction</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#pycarl.gmp.RationalFunction.to_smt2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pycarl.gmp.Term">
+<em class="property">class </em><code class="sig-prename descclassname">pycarl.gmp.</code><code class="sig-name descname">Term</code><a class="headerlink" href="#pycarl.gmp.Term" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt id="pycarl.gmp.Term.coeff">
+<em class="property">property </em><code class="sig-name descname">coeff</code><a class="headerlink" href="#pycarl.gmp.Term.coeff" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Term.is_constant">
+<code class="sig-name descname">is_constant</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Term</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.gmp.Term.is_constant" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Term.is_one">
+<code class="sig-name descname">is_one</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Term</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.gmp.Term.is_one" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Term.monomial">
+<em class="property">property </em><code class="sig-name descname">monomial</code><a class="headerlink" href="#pycarl.gmp.Term.monomial" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.gmp.Term.tdeg">
+<em class="property">property </em><code class="sig-name descname">tdeg</code><a class="headerlink" href="#pycarl.gmp.Term.tdeg" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="pycarl.gmp.abs">
+<code class="sig-prename descclassname">pycarl.gmp.</code><code class="sig-name descname">abs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em><span class="sig-paren">)</span> &#x2192; pycarl.gmp.gmp.Interval<a class="headerlink" href="#pycarl.gmp.abs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="pycarl.gmp.ceil">
+<code class="sig-prename descclassname">pycarl.gmp.</code><code class="sig-name descname">ceil</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em><span class="sig-paren">)</span> &#x2192; pycarl.gmp.gmp.Interval<a class="headerlink" href="#pycarl.gmp.ceil" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="pycarl.gmp.create_factorized_polynomial">
+<code class="sig-prename descclassname">pycarl.gmp.</code><code class="sig-name descname">create_factorized_polynomial</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">polynomial</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycarl.gmp.create_factorized_polynomial" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="pycarl.gmp.denominator">
+<code class="sig-prename descclassname">pycarl.gmp.</code><code class="sig-name descname">denominator</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycarl.gmp.denominator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="pycarl.gmp.div">
+<code class="sig-prename descclassname">pycarl.gmp.</code><code class="sig-name descname">div</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em>, <em class="sig-param"><span class="n">arg1</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em><span class="sig-paren">)</span> &#x2192; pycarl.gmp.gmp.Interval<a class="headerlink" href="#pycarl.gmp.div" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="pycarl.gmp.expand">
+<code class="sig-prename descclassname">pycarl.gmp.</code><code class="sig-name descname">expand</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycarl.gmp.expand" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="pycarl.gmp.floor">
+<code class="sig-prename descclassname">pycarl.gmp.</code><code class="sig-name descname">floor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em><span class="sig-paren">)</span> &#x2192; pycarl.gmp.gmp.Interval<a class="headerlink" href="#pycarl.gmp.floor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="pycarl.gmp.isInteger">
+<code class="sig-prename descclassname">pycarl.gmp.</code><code class="sig-name descname">isInteger</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.gmp.isInteger" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="pycarl.gmp.numerator">
+<code class="sig-prename descclassname">pycarl.gmp.</code><code class="sig-name descname">numerator</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycarl.gmp.numerator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="pycarl.gmp.pow">
+<code class="sig-prename descclassname">pycarl.gmp.</code><code class="sig-name descname">pow</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em>, <em class="sig-param"><span class="n">arg1</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; pycarl.gmp.gmp.Interval<a class="headerlink" href="#pycarl.gmp.pow" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="pycarl.gmp.quotient">
+<code class="sig-prename descclassname">pycarl.gmp.</code><code class="sig-name descname">quotient</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em>, <em class="sig-param"><span class="n">arg1</span><span class="p">:</span> <span class="n">pycarl.gmp.gmp.Interval</span></em><span class="sig-paren">)</span> &#x2192; pycarl.gmp.gmp.Interval<a class="headerlink" href="#pycarl.gmp.quotient" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-pycarl.cln">
+<span id="number-dependent-types-cln"></span><h2>Number dependent types (cln)<a class="headerlink" href="#module-pycarl.cln" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="pycarl.cln.Factorization">
+<em class="property">class </em><code class="sig-prename descclassname">pycarl.cln.</code><code class="sig-name descname">Factorization</code><a class="headerlink" href="#pycarl.cln.Factorization" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt id="pycarl.cln.FactorizedPolynomial">
+<em class="property">class </em><code class="sig-prename descclassname">pycarl.cln.</code><code class="sig-name descname">FactorizedPolynomial</code><a class="headerlink" href="#pycarl.cln.FactorizedPolynomial" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represent a polynomial with its factorization</p>
+<dl class="py method">
+<dt id="pycarl.cln.FactorizedPolynomial.cache">
+<code class="sig-name descname">cache</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.FactorizedPolynomial</span></em><span class="sig-paren">)</span> &#x2192; pycarl.cln.cln._FactorizationCache<a class="headerlink" href="#pycarl.cln.FactorizedPolynomial.cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.FactorizedPolynomial.coefficient">
+<em class="property">property </em><code class="sig-name descname">coefficient</code><a class="headerlink" href="#pycarl.cln.FactorizedPolynomial.coefficient" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.FactorizedPolynomial.constant_part">
+<code class="sig-name descname">constant_part</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.FactorizedPolynomial</span></em><span class="sig-paren">)</span> &#x2192; pycarl.cln.cln.Rational<a class="headerlink" href="#pycarl.cln.FactorizedPolynomial.constant_part" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.FactorizedPolynomial.derive">
+<code class="sig-name descname">derive</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.FactorizedPolynomial</span></em>, <em class="sig-param"><span class="n">variable</span><span class="p">:</span> <span class="n">pycarl.core.Variable</span></em><span class="sig-paren">)</span> &#x2192; pycarl.cln.cln.FactorizedPolynomial<a class="headerlink" href="#pycarl.cln.FactorizedPolynomial.derive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the derivative</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.FactorizedPolynomial.evaluate">
+<code class="sig-name descname">evaluate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.FactorizedPolynomial</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">Dict<span class="p">[</span>pycarl.core.Variable<span class="p">, </span>pycarl.cln.cln.Rational<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; pycarl.cln.cln.Rational<a class="headerlink" href="#pycarl.cln.FactorizedPolynomial.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.FactorizedPolynomial.factorization">
+<code class="sig-name descname">factorization</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.FactorizedPolynomial</span></em><span class="sig-paren">)</span> &#x2192; pycarl.cln.cln.Factorization<a class="headerlink" href="#pycarl.cln.FactorizedPolynomial.factorization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get factorization</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.FactorizedPolynomial.gather_variables">
+<code class="sig-name descname">gather_variables</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.FactorizedPolynomial</span></em><span class="sig-paren">)</span> &#x2192; Set<span class="p">[</span>pycarl.core.Variable<span class="p">]</span><a class="headerlink" href="#pycarl.cln.FactorizedPolynomial.gather_variables" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.FactorizedPolynomial.is_constant">
+<code class="sig-name descname">is_constant</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.FactorizedPolynomial</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.cln.FactorizedPolynomial.is_constant" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.FactorizedPolynomial.is_one">
+<code class="sig-name descname">is_one</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.FactorizedPolynomial</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.cln.FactorizedPolynomial.is_one" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.FactorizedPolynomial.polynomial">
+<code class="sig-name descname">polynomial</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.FactorizedPolynomial</span></em><span class="sig-paren">)</span> &#x2192; pycarl.cln.cln.Polynomial<a class="headerlink" href="#pycarl.cln.FactorizedPolynomial.polynomial" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get underlying polynomial</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.FactorizedPolynomial.to_smt2">
+<code class="sig-name descname">to_smt2</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.FactorizedPolynomial</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#pycarl.cln.FactorizedPolynomial.to_smt2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pycarl.cln.FactorizedRationalFunction">
+<em class="property">class </em><code class="sig-prename descclassname">pycarl.cln.</code><code class="sig-name descname">FactorizedRationalFunction</code><a class="headerlink" href="#pycarl.cln.FactorizedRationalFunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represent a rational function, that is the fraction of two factorized polynomials</p>
+<dl class="py method">
+<dt id="pycarl.cln.FactorizedRationalFunction.constant_part">
+<code class="sig-name descname">constant_part</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.FactorizedRationalFunction</span></em><span class="sig-paren">)</span> &#x2192; pycarl.cln.cln.Rational<a class="headerlink" href="#pycarl.cln.FactorizedRationalFunction.constant_part" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.FactorizedRationalFunction.denominator">
+<em class="property">property </em><code class="sig-name descname">denominator</code><a class="headerlink" href="#pycarl.cln.FactorizedRationalFunction.denominator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.FactorizedRationalFunction.derive">
+<code class="sig-name descname">derive</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.FactorizedRationalFunction</span></em>, <em class="sig-param"><span class="n">variable</span><span class="p">:</span> <span class="n">pycarl.core.Variable</span></em><span class="sig-paren">)</span> &#x2192; pycarl.cln.cln.FactorizedRationalFunction<a class="headerlink" href="#pycarl.cln.FactorizedRationalFunction.derive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the derivative</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.FactorizedRationalFunction.evaluate">
+<code class="sig-name descname">evaluate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.FactorizedRationalFunction</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">Dict<span class="p">[</span>pycarl.core.Variable<span class="p">, </span>pycarl.cln.cln.Rational<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; pycarl.cln.cln.Rational<a class="headerlink" href="#pycarl.cln.FactorizedRationalFunction.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.FactorizedRationalFunction.gather_variables">
+<code class="sig-name descname">gather_variables</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.FactorizedRationalFunction</span></em><span class="sig-paren">)</span> &#x2192; Set<span class="p">[</span>pycarl.core.Variable<span class="p">]</span><a class="headerlink" href="#pycarl.cln.FactorizedRationalFunction.gather_variables" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.FactorizedRationalFunction.is_constant">
+<code class="sig-name descname">is_constant</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.FactorizedRationalFunction</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.cln.FactorizedRationalFunction.is_constant" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.FactorizedRationalFunction.numerator">
+<em class="property">property </em><code class="sig-name descname">numerator</code><a class="headerlink" href="#pycarl.cln.FactorizedRationalFunction.numerator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.FactorizedRationalFunction.rational_function">
+<code class="sig-name descname">rational_function</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.FactorizedRationalFunction</span></em><span class="sig-paren">)</span> &#x2192; pycarl.cln.cln.RationalFunction<a class="headerlink" href="#pycarl.cln.FactorizedRationalFunction.rational_function" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.FactorizedRationalFunction.to_smt2">
+<code class="sig-name descname">to_smt2</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.FactorizedRationalFunction</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#pycarl.cln.FactorizedRationalFunction.to_smt2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pycarl.cln.Integer">
+<em class="property">class </em><code class="sig-prename descclassname">pycarl.cln.</code><code class="sig-name descname">Integer</code><a class="headerlink" href="#pycarl.cln.Integer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class wrapping cln-integers</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="pycarl.cln.Interval">
+<em class="property">class </em><code class="sig-prename descclassname">pycarl.cln.</code><code class="sig-name descname">Interval</code><a class="headerlink" href="#pycarl.cln.Interval" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt id="pycarl.cln.Interval.abs">
+<code class="sig-name descname">abs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em><span class="sig-paren">)</span> &#x2192; pycarl.cln.cln.Interval<a class="headerlink" href="#pycarl.cln.Interval.abs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Interval.center">
+<code class="sig-name descname">center</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em><span class="sig-paren">)</span> &#x2192; pycarl.cln.cln.Rational<a class="headerlink" href="#pycarl.cln.Interval.center" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Interval.complement">
+<code class="sig-name descname">complement</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em>, <em class="sig-param"><span class="n">arg1</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.cln.Interval.complement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Interval.contains">
+<code class="sig-name descname">contains</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycarl.cln.Interval.contains" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>contains(self: pycarl.cln.cln.Interval, arg0: pycarl.cln.cln.Rational) -&gt; bool</p></li>
+<li><p>contains(self: pycarl.cln.cln.Interval, arg0: pycarl.cln.cln.Interval) -&gt; bool</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Interval.diameter">
+<code class="sig-name descname">diameter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em><span class="sig-paren">)</span> &#x2192; pycarl.cln.cln.Rational<a class="headerlink" href="#pycarl.cln.Interval.diameter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Interval.difference">
+<code class="sig-name descname">difference</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em>, <em class="sig-param"><span class="n">arg1</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em>, <em class="sig-param"><span class="n">arg2</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.cln.Interval.difference" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Interval.div">
+<code class="sig-name descname">div</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em><span class="sig-paren">)</span> &#x2192; pycarl.cln.cln.Interval<a class="headerlink" href="#pycarl.cln.Interval.div" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Interval.emptyInterval">
+<code class="sig-name descname">emptyInterval</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; pycarl.cln.cln.Interval<a class="headerlink" href="#pycarl.cln.Interval.emptyInterval" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Interval.integralPart">
+<code class="sig-name descname">integralPart</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em><span class="sig-paren">)</span> &#x2192; pycarl.cln.cln.Interval<a class="headerlink" href="#pycarl.cln.Interval.integralPart" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Interval.intersect">
+<code class="sig-name descname">intersect</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em><span class="sig-paren">)</span> &#x2192; pycarl.cln.cln.Interval<a class="headerlink" href="#pycarl.cln.Interval.intersect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Interval.intersectsWith">
+<code class="sig-name descname">intersectsWith</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.cln.Interval.intersectsWith" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Interval.inverse">
+<code class="sig-name descname">inverse</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em><span class="sig-paren">)</span> &#x2192; pycarl.cln.cln.Interval<a class="headerlink" href="#pycarl.cln.Interval.inverse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Interval.isClosedInterval">
+<code class="sig-name descname">isClosedInterval</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.cln.Interval.isClosedInterval" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Interval.isEmpty">
+<code class="sig-name descname">isEmpty</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.cln.Interval.isEmpty" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Interval.isHalfBounded">
+<code class="sig-name descname">isHalfBounded</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.cln.Interval.isHalfBounded" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Interval.isInfinite">
+<code class="sig-name descname">isInfinite</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.cln.Interval.isInfinite" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Interval.isNegative">
+<code class="sig-name descname">isNegative</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.cln.Interval.isNegative" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Interval.isOne">
+<code class="sig-name descname">isOne</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.cln.Interval.isOne" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Interval.isOpenInterval">
+<code class="sig-name descname">isOpenInterval</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.cln.Interval.isOpenInterval" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Interval.isPointInterval">
+<code class="sig-name descname">isPointInterval</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.cln.Interval.isPointInterval" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Interval.isPositive">
+<code class="sig-name descname">isPositive</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.cln.Interval.isPositive" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Interval.isProperSubset">
+<code class="sig-name descname">isProperSubset</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.cln.Interval.isProperSubset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Interval.isSemiNegative">
+<code class="sig-name descname">isSemiNegative</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.cln.Interval.isSemiNegative" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Interval.isSemiPositive">
+<code class="sig-name descname">isSemiPositive</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.cln.Interval.isSemiPositive" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Interval.isSubset">
+<code class="sig-name descname">isSubset</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.cln.Interval.isSubset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Interval.isUnbounded">
+<code class="sig-name descname">isUnbounded</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.cln.Interval.isUnbounded" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Interval.isZero">
+<code class="sig-name descname">isZero</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.cln.Interval.isZero" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Interval.lower">
+<code class="sig-name descname">lower</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em><span class="sig-paren">)</span> &#x2192; pycarl.cln.cln.Rational<a class="headerlink" href="#pycarl.cln.Interval.lower" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Interval.meets">
+<code class="sig-name descname">meets</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Rational</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.cln.Interval.meets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Interval.sample">
+<code class="sig-name descname">sample</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">bool</span></em><span class="sig-paren">)</span> &#x2192; pycarl.cln.cln.Rational<a class="headerlink" href="#pycarl.cln.Interval.sample" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Interval.setLower">
+<code class="sig-name descname">setLower</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Rational</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#pycarl.cln.Interval.setLower" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Interval.setUpper">
+<code class="sig-name descname">setUpper</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Rational</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#pycarl.cln.Interval.setUpper" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Interval.symmetricDifference">
+<code class="sig-name descname">symmetricDifference</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em>, <em class="sig-param"><span class="n">arg1</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em>, <em class="sig-param"><span class="n">arg2</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.cln.Interval.symmetricDifference" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Interval.unboundedInterval">
+<code class="sig-name descname">unboundedInterval</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; pycarl.cln.cln.Interval<a class="headerlink" href="#pycarl.cln.Interval.unboundedInterval" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Interval.unite">
+<code class="sig-name descname">unite</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em>, <em class="sig-param"><span class="n">arg1</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em>, <em class="sig-param"><span class="n">arg2</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.cln.Interval.unite" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Interval.upper">
+<code class="sig-name descname">upper</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em><span class="sig-paren">)</span> &#x2192; pycarl.cln.cln.Rational<a class="headerlink" href="#pycarl.cln.Interval.upper" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Interval.zeroInterval">
+<code class="sig-name descname">zeroInterval</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; pycarl.cln.cln.Interval<a class="headerlink" href="#pycarl.cln.Interval.zeroInterval" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pycarl.cln.Polynomial">
+<em class="property">class </em><code class="sig-prename descclassname">pycarl.cln.</code><code class="sig-name descname">Polynomial</code><a class="headerlink" href="#pycarl.cln.Polynomial" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represent a multivariate polynomial</p>
+<dl class="py method">
+<dt id="pycarl.cln.Polynomial.constant_part">
+<code class="sig-name descname">constant_part</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Polynomial</span></em><span class="sig-paren">)</span> &#x2192; pycarl.cln.cln.Rational<a class="headerlink" href="#pycarl.cln.Polynomial.constant_part" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Polynomial.degree">
+<code class="sig-name descname">degree</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Polynomial</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">pycarl.core.Variable</span></em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#pycarl.cln.Polynomial.degree" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Polynomial.derive">
+<code class="sig-name descname">derive</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Polynomial</span></em>, <em class="sig-param"><span class="n">variable</span><span class="p">:</span> <span class="n">pycarl.core.Variable</span></em><span class="sig-paren">)</span> &#x2192; pycarl.cln.cln.Polynomial<a class="headerlink" href="#pycarl.cln.Polynomial.derive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the derivative</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Polynomial.evaluate">
+<code class="sig-name descname">evaluate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Polynomial</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">Dict<span class="p">[</span>pycarl.core.Variable<span class="p">, </span>pycarl.cln.cln.Rational<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; pycarl.cln.cln.Rational<a class="headerlink" href="#pycarl.cln.Polynomial.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Polynomial.gather_variables">
+<code class="sig-name descname">gather_variables</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Polynomial</span></em><span class="sig-paren">)</span> &#x2192; Set<span class="p">[</span>pycarl.core.Variable<span class="p">]</span><a class="headerlink" href="#pycarl.cln.Polynomial.gather_variables" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Polynomial.is_constant">
+<code class="sig-name descname">is_constant</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Polynomial</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.cln.Polynomial.is_constant" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Polynomial.nr_terms">
+<em class="property">property </em><code class="sig-name descname">nr_terms</code><a class="headerlink" href="#pycarl.cln.Polynomial.nr_terms" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Polynomial.substitute">
+<code class="sig-name descname">substitute</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Polynomial</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">Dict<span class="p">[</span>pycarl.core.Variable<span class="p">, </span>pycarl.cln.cln.Polynomial<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; pycarl.cln.cln.Polynomial<a class="headerlink" href="#pycarl.cln.Polynomial.substitute" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Polynomial.to_smt2">
+<code class="sig-name descname">to_smt2</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Polynomial</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#pycarl.cln.Polynomial.to_smt2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Polynomial.total_degree">
+<em class="property">property </em><code class="sig-name descname">total_degree</code><a class="headerlink" href="#pycarl.cln.Polynomial.total_degree" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pycarl.cln.Rational">
+<em class="property">class </em><code class="sig-prename descclassname">pycarl.cln.</code><code class="sig-name descname">Rational</code><a class="headerlink" href="#pycarl.cln.Rational" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class wrapping cln-rational numbers</p>
+<dl class="py method">
+<dt id="pycarl.cln.Rational.denominator">
+<em class="property">property </em><code class="sig-name descname">denominator</code><a class="headerlink" href="#pycarl.cln.Rational.denominator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Rational.is_minus_one">
+<code class="sig-name descname">is_minus_one</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Rational</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.cln.Rational.is_minus_one" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Rational.is_one">
+<code class="sig-name descname">is_one</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Rational</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.cln.Rational.is_one" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Rational.nominator">
+<em class="property">property </em><code class="sig-name descname">nominator</code><a class="headerlink" href="#pycarl.cln.Rational.nominator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Rational.numerator">
+<em class="property">property </em><code class="sig-name descname">numerator</code><a class="headerlink" href="#pycarl.cln.Rational.numerator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pycarl.cln.RationalFunction">
+<em class="property">class </em><code class="sig-prename descclassname">pycarl.cln.</code><code class="sig-name descname">RationalFunction</code><a class="headerlink" href="#pycarl.cln.RationalFunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represent a rational function, that is the fraction of two multivariate polynomials</p>
+<dl class="py method">
+<dt id="pycarl.cln.RationalFunction.constant_part">
+<code class="sig-name descname">constant_part</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.RationalFunction</span></em><span class="sig-paren">)</span> &#x2192; pycarl.cln.cln.Rational<a class="headerlink" href="#pycarl.cln.RationalFunction.constant_part" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.RationalFunction.denominator">
+<em class="property">property </em><code class="sig-name descname">denominator</code><a class="headerlink" href="#pycarl.cln.RationalFunction.denominator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.RationalFunction.derive">
+<code class="sig-name descname">derive</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.RationalFunction</span></em>, <em class="sig-param"><span class="n">variable</span><span class="p">:</span> <span class="n">pycarl.core.Variable</span></em><span class="sig-paren">)</span> &#x2192; pycarl.cln.cln.RationalFunction<a class="headerlink" href="#pycarl.cln.RationalFunction.derive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the derivative</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.RationalFunction.evaluate">
+<code class="sig-name descname">evaluate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.RationalFunction</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">Dict<span class="p">[</span>pycarl.core.Variable<span class="p">, </span>pycarl.cln.cln.Rational<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; pycarl.cln.cln.Rational<a class="headerlink" href="#pycarl.cln.RationalFunction.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.RationalFunction.gather_variables">
+<code class="sig-name descname">gather_variables</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.RationalFunction</span></em><span class="sig-paren">)</span> &#x2192; Set<span class="p">[</span>pycarl.core.Variable<span class="p">]</span><a class="headerlink" href="#pycarl.cln.RationalFunction.gather_variables" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.RationalFunction.is_constant">
+<code class="sig-name descname">is_constant</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.RationalFunction</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.cln.RationalFunction.is_constant" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.RationalFunction.nominator">
+<em class="property">property </em><code class="sig-name descname">nominator</code><a class="headerlink" href="#pycarl.cln.RationalFunction.nominator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.RationalFunction.numerator">
+<em class="property">property </em><code class="sig-name descname">numerator</code><a class="headerlink" href="#pycarl.cln.RationalFunction.numerator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.RationalFunction.to_smt2">
+<code class="sig-name descname">to_smt2</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.RationalFunction</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#pycarl.cln.RationalFunction.to_smt2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pycarl.cln.Term">
+<em class="property">class </em><code class="sig-prename descclassname">pycarl.cln.</code><code class="sig-name descname">Term</code><a class="headerlink" href="#pycarl.cln.Term" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt id="pycarl.cln.Term.coeff">
+<em class="property">property </em><code class="sig-name descname">coeff</code><a class="headerlink" href="#pycarl.cln.Term.coeff" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Term.is_constant">
+<code class="sig-name descname">is_constant</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Term</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.cln.Term.is_constant" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Term.is_one">
+<code class="sig-name descname">is_one</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Term</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.cln.Term.is_one" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Term.monomial">
+<em class="property">property </em><code class="sig-name descname">monomial</code><a class="headerlink" href="#pycarl.cln.Term.monomial" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pycarl.cln.Term.tdeg">
+<em class="property">property </em><code class="sig-name descname">tdeg</code><a class="headerlink" href="#pycarl.cln.Term.tdeg" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="pycarl.cln.abs">
+<code class="sig-prename descclassname">pycarl.cln.</code><code class="sig-name descname">abs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em><span class="sig-paren">)</span> &#x2192; pycarl.cln.cln.Interval<a class="headerlink" href="#pycarl.cln.abs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="pycarl.cln.ceil">
+<code class="sig-prename descclassname">pycarl.cln.</code><code class="sig-name descname">ceil</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em><span class="sig-paren">)</span> &#x2192; pycarl.cln.cln.Interval<a class="headerlink" href="#pycarl.cln.ceil" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="pycarl.cln.create_factorized_polynomial">
+<code class="sig-prename descclassname">pycarl.cln.</code><code class="sig-name descname">create_factorized_polynomial</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">polynomial</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycarl.cln.create_factorized_polynomial" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="pycarl.cln.denominator">
+<code class="sig-prename descclassname">pycarl.cln.</code><code class="sig-name descname">denominator</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycarl.cln.denominator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="pycarl.cln.div">
+<code class="sig-prename descclassname">pycarl.cln.</code><code class="sig-name descname">div</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em>, <em class="sig-param"><span class="n">arg1</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em><span class="sig-paren">)</span> &#x2192; pycarl.cln.cln.Interval<a class="headerlink" href="#pycarl.cln.div" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="pycarl.cln.expand">
+<code class="sig-prename descclassname">pycarl.cln.</code><code class="sig-name descname">expand</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycarl.cln.expand" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="pycarl.cln.floor">
+<code class="sig-prename descclassname">pycarl.cln.</code><code class="sig-name descname">floor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em><span class="sig-paren">)</span> &#x2192; pycarl.cln.cln.Interval<a class="headerlink" href="#pycarl.cln.floor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="pycarl.cln.isInteger">
+<code class="sig-prename descclassname">pycarl.cln.</code><code class="sig-name descname">isInteger</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pycarl.cln.isInteger" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="pycarl.cln.numerator">
+<code class="sig-prename descclassname">pycarl.cln.</code><code class="sig-name descname">numerator</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycarl.cln.numerator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="pycarl.cln.pow">
+<code class="sig-prename descclassname">pycarl.cln.</code><code class="sig-name descname">pow</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em>, <em class="sig-param"><span class="n">arg1</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; pycarl.cln.cln.Interval<a class="headerlink" href="#pycarl.cln.pow" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="pycarl.cln.quotient">
+<code class="sig-prename descclassname">pycarl.cln.</code><code class="sig-name descname">quotient</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em>, <em class="sig-param"><span class="n">arg1</span><span class="p">:</span> <span class="n">pycarl.cln.cln.Interval</span></em><span class="sig-paren">)</span> &#x2192; pycarl.cln.cln.Interval<a class="headerlink" href="#pycarl.cln.quotient" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../_sources/api/core.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+      
+    </p>
+    <p>
+        &copy; Copyright 2016-2019 Moves RWTH Aachen.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
